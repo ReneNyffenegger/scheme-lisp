@@ -1,0 +1,11 @@
+#!/bin/sh
+
+rm -f pwsh-scheme.zip
+
+for ps1 in *.ps1; do
+  cp $ps1 ${ps1%.ps1}.p-s-1
+done
+
+zip pwsh-scheme.zip *.p-s-1 unzip-zip.txt
+
+rm *.p-s-1

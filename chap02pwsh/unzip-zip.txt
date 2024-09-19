@@ -1,0 +1,14 @@
+$zipFilePath = "$pwd/pwsh-scheme.zip"
+$extractPath = "$pwd/pwsh-scheme"
+
+add-type -assemblyName 'System.IO.Compression.FileSystem'
+
+[System.IO.Compression.ZipFile]::ExtractToDirectory($zipFilePath, $extractPath)
+
+get-childItem -path $extractPath -filter "*.p-s-1" | forEach-object {
+    $newName = $_.fullName -replace '\.p-s-1$', '.ps1'
+    rename-item -path $_.fullName -newName $newName
+}
+
+remove-item *.p-s-1
+remove-item pwsh-scheme.zip
