@@ -1,0 +1,6 @@
+Start shell with
+   pwsh -file PwScheme.ps1
+
+Non-interactive:
+   pwsh- file PwScheme.ps1 tests/y-combinator.scm
+
