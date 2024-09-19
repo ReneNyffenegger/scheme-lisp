@@ -8,23 +8,50 @@ Non-interactive:
 
 -----------------------------------------------------
 
-Environment.ps1
+PwScheme.ps1 {
+
+  The entry point of the program.
+
+}
+Bag.ps1 {
+
+  All it does, is it makes sure that when the Parser tries to read the input,
+  it gets something with a balanced number of parentheses.
+
+  Between the Tokenizer and the Parser.
+
+
+}
+Environment.ps1 {
   Defines
     - class Environment
     - class Cell
 
-Parser.ps1
+  There are two environments:
+    - lexical and
+    - dynamic.
+
+}
+Evaluator.ps1 {
+
+  Transforms the code into the executing program. 
+
+}
+Parser.ps1 {
    Defines
      - Enum ExpType
      - class Fun
-     - class Exp
+     - class Exp (  represents an expression in the AST, almost everything is an Exp: literal, pair, function … )
         with members
           - type
           - value
           - car
           - cdr
+}
+System.ps1 {
 
-System.ps1
+  Interaction with the OS.
+
   Make-Global-Environment
    - creates a ("global") Environment object 
    - then calls Make-BuiltIn multiple times 
@@ -32,8 +59,38 @@ System.ps1
        Make-BuiltIn "EVAL" $globEnv
        Make-BuiltIn "EXIT" $globEnv
        etc …
+}
+
+Make-Function {
+
+  Called from the Evaluate function for
+    - lambda
+    - define
+
+}
 
 -----------------------------------------------------
 
 The PowerScheme Interpreter
    https://dev.to/naens/the-powerscheme-interpreter-46k9
+
+   my Parser only has one kind of a non-terminal to parse: the s-expressions
+
+   That is, when it encounters an open parenthesis, it
+   knows that what it represents, is a start of an s-expression
+
+   Not implemented:
+     - vectors
+     - continuations
+     - macros
+
+  Three kinds of types in the interpreter:
+    - primitive types (number, symbol, string, character, and boolean),
+    - pairs (they are represented by conses), and
+    - functions, of which there are three types:
+       - user-defined,
+       - built-in, and
+       - thunks
+
+   Implementation is case-insensitive.
+
