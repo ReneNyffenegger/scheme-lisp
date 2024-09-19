@@ -5,6 +5,35 @@ Non-interactive:
    pwsh- file PwScheme.ps1 tests/y-combinator.scm
 
 
+
+-----------------------------------------------------
+
+Environment.ps1
+  Defines
+    - class Environment
+    - class Cell
+
+Parser.ps1
+   Defines
+     - Enum ExpType
+     - class Fun
+     - class Exp
+        with members
+          - type
+          - value
+          - car
+          - cdr
+
+System.ps1
+  Make-Global-Environment
+   - creates a ("global") Environment object 
+   - then calls Make-BuiltIn multiple times 
+       Make-BuiltIn "+" $globEnv
+       Make-BuiltIn "EVAL" $globEnv
+       Make-BuiltIn "EXIT" $globEnv
+       etc …
+
+-----------------------------------------------------
+
 The PowerScheme Interpreter
    https://dev.to/naens/the-powerscheme-interpreter-46k9
-
