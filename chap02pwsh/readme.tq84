@@ -4,3 +4,7 @@ Start shell with
 Non-interactive:
    pwsh- file PwScheme.ps1 tests/y-combinator.scm
 
+
+The PowerScheme Interpreter
+   https://dev.to/naens/the-powerscheme-interpreter-46k9
+
